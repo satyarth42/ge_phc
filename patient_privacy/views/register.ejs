@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Patitn Healthcare System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/custom.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/socket.io.js"></script>
+</head>
+<body>
+<% include templates/header_auth.ejs %>
+<div class="container-fluid container">
+    <%if(error.length>0){%>
+    <div class="alert alert-danger"><%=error%></div>
+    <%}%>
+    <form method="post" action="/register">
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="E-Mail" required>
+        </div>
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+            <label for="pass">Password</label>
+            <input type="password" class="form-control" id="pass" name="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <label for="confpass">Confirm Password</label>
+            <input type="password" class="form-control" id="confpass" name="confpass" placeholder="Confirm Password" required>
+        </div>
+        <input type="submit" class="btn btn-primary">
+    </form>
+</div>
+</body>
+</html>

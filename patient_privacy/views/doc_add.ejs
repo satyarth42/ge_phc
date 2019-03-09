@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Doctors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'>
+</head>
+<body>
+<div class="container container-fluid main" align="center">
+    <div class="main">
+        <% if(error_msg.length>0){ %>
+        <div class="alert alert-danger"><%=error_msg%></div>
+        <%}%>
+        <% if(success.length>0){ %>
+        <div class="alert alert-success"><%=success%></div>
+        <%}%>
+        <div class="col-md-6 col-sm-9 col-12 col-xl-6 col-lg-6">
+            <form method="post" action="/admin/adddoctor">
+                <div class="form-group" align="left">
+                    <label for="email" class="col-form-label-lg">E-mail</label>
+                    <input type="text" class="form-control" name="email" placeholder="Enter Username" required>
+                </div>
+                <div class="form-group" align="left">
+                    <label for="fname" class="col-form-label-lg">First Name</label>
+                    <input type="text" class="form-control" name="fname" placeholder="Enter First Name" required>
+                </div>
+                <div class="form-group" align="left">
+                    <label for="lname" class="col-form-label-lg">Last Name</label>
+                    <input type="text" class="form-control" name="lname" placeholder="Enter Last Name" required>
+                </div>
+                <div class="form-group" align="left">
+                    <label for="loginPassword" class="col-form-label-lg">Login Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter Login Password" required>
+                </div>
+                <div class="form-group" align="left">
+                    <label for="type" class="col-form-label-lg">Type of Doctor</label>
+                    <input type="radio" class="radio-inline" name="type" value="General Physician">General Physician
+                    <input type="radio" class="radio-inline" name="type" value="Cardiologist">Cardiologist
+                    <input type="radio" class="radio-inline" name="type" value="Neurologist">Neurologist
+                </div>
+                <button type="submit" class="btn btn-primary mb-4">Submit</button>
+                <button type="reset" class="btn btn-light mb-4">Reset</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/custom.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io();
+
+    </script>
+</head>
+<body>
+<% include templates/header_auth.ejs %>
+
+<div class="container">
+
+
+    <%= typeof msg != 'undefined' ? msg : '' %>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <h1>File Upload</h1>
+
+        <input type="text" class="form-control" placeholder="Enter comments" name="comment"><br>
+        <input type="hidden" value="<%=doctor%>" name="doc_name">
+        <input type="hidden" value="<%=type%>" name="type">
+        <div class="file-field input-field">
+            <div class="btn grey">
+                <span>File</span>
+                <input name="myImage" type="file" id="file_address">
+
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+    <br>
+    <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img" id="uploaded">
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</body>
+</html>

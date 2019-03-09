@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/custom.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io();
+
+        function req_page(data){
+            window.location.href = 'http://localhost:3000/request/'+data[0]+'/'+data[1];
+        }
+    </script>
+</head>
+<body>
+<% include templates/header_auth.ejs %>
+<div class="container-fluid container">
+    <%if(msg.length>0){%>
+        <div class="alert alert-success"><%=msg%></div>
+    <%}%>
+    <div>
+        <table align="center" class="table table-bordered table-responsive table-hover">
+            <tr><th>S No.</th><th>First Name</th><th>Last Name</th><th>Speciality</th></tr>
+        <%doctors.forEach(function(item,index){%>
+            <tr>
+
+                <td><a href='/request/<%=item.email%>/<%=item.type%>'><%=index+1%></a></td>
+                <td><a href='/request/<%=item.email%>/<%=item.type%>'><%=item.fname%></a></td>
+                <td><a href='/request/<%=item.email%>/<%=item.type%>'><%=item.lname%></a></td>
+                <td><a href='/request/<%=item.email%>/<%=item.type%>'><%=item.type%></a></td>
+            </tr>
+        <%})%>
+        </table>
+    </div>
+    <div>
+        <%data.forEach(function(item,index){%>
+        <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12" style="border:thick">
+
+
+            <div class='alert alert-warning col-md-8'> Comment: <%=item.comments%></div>
+
+            <img src="<%=item.images%>" height="600px" width="400px"><br><br>
+
+            <%if(item['read']==0){%>
+                <div class="alert alert-success col-md-8">Reply: <%=item.doctors_reply%></div>
+            <%}else{%>
+            <div class="alert alert-success col-md-8">Reply: Pending</div>
+            <%}%>
+
+            <br><br><br><br>
+        </div>
+        <%})%>
+    </div>
+</div>
+<script type="text/javascript">
+</script>
+</body>
+</html>
